@@ -1,0 +1,376 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .glowing-text {
+    color: #fff;
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 192, 203, 0.8),
+      0 0 30px rgba(255, 192, 203, 0.6),
+      0 0 40px rgba(255, 105, 180, 0.4),
+      0 0 70px rgba(255, 105, 180, 0.2);
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-button {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .surprise-button {
+    @apply px-10 py-6 text-xl md:text-2xl font-bold text-white rounded-2xl;
+    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+    box-shadow: 0 10px 40px rgba(236, 72, 153, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .surprise-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 50px rgba(236, 72, 153, 0.6);
+  }
+
+  .glow-button {
+    animation: button-glow 2s ease-in-out infinite;
+  }
+
+  .section-title {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 192, 203, 0.8),
+      0 0 30px rgba(255, 192, 203, 0.6),
+      0 0 40px rgba(255, 105, 180, 0.4);
+  }
+  50% {
+    text-shadow:
+      0 0 15px rgba(255, 255, 255, 1),
+      0 0 30px rgba(255, 192, 203, 1),
+      0 0 45px rgba(255, 192, 203, 0.8),
+      0 0 60px rgba(255, 105, 180, 0.6);
+  }
+}
+
+@keyframes button-glow {
+  0%, 100% {
+    box-shadow: 0 5px 20px rgba(236, 72, 153, 0.4);
+  }
+  50% {
+    box-shadow: 0 5px 30px rgba(236, 72, 153, 0.7);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-heart {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 1s ease-out 0.5s both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+.animate-pulse-heart {
+  animation: pulse-heart 1.5s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: slide-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animation-delay-800 {
+  animation-delay: 0.8s;
+}
+
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particles-container::before {
+  content: '✨';
+  position: absolute;
+  font-size: 20px;
+  animation: particle-float-1 15s infinite;
+  top: 10%;
+  left: 10%;
+}
+
+.particles-container::after {
+  content: '⭐';
+  position: absolute;
+  font-size: 20px;
+  animation: particle-float-2 18s infinite;
+  top: 20%;
+  right: 15%;
+}
+
+@keyframes particle-float-1 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(100px, 200px) rotate(180deg);
+  }
+}
+
+@keyframes particle-float-2 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-150px, 250px) rotate(-180deg);
+  }
+}
+
+.confetti-container {
+  overflow: hidden;
+}
+
+.confetti-container::before,
+.confetti-container::after {
+  content: '🎊';
+  position: absolute;
+  font-size: 30px;
+  animation: confetti-fall 3s ease-in-out infinite;
+}
+
+.confetti-container::before {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.confetti-container::after {
+  content: '🎉';
+  right: 20%;
+  animation-delay: 1.5s;
+}
+
+@keyframes confetti-fall {
+  0% {
+    top: -10%;
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    transform: rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.floating-balloons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floating-balloons::before,
+.floating-balloons::after {
+  content: '🎈';
+  position: absolute;
+  font-size: 50px;
+  animation: balloon-float 8s ease-in-out infinite;
+}
+
+.floating-balloons::before {
+  left: 15%;
+  bottom: -10%;
+  animation-delay: 0s;
+}
+
+.floating-balloons::after {
+  right: 15%;
+  bottom: -10%;
+  animation-delay: 2s;
+}
+
+@keyframes balloon-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+.photo-zoom {
+  animation: photo-zoom-effect 20s ease-in-out infinite;
+}
+
+@keyframes photo-zoom-effect {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.cake-icon {
+  animation: cake-bounce 2s ease-in-out infinite;
+}
+
+@keyframes cake-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.candle-flame {
+  font-size: 28px;
+  transition: all 0.3s ease;
+}
+
+.candle-flame.lit {
+  animation: flicker 1.5s ease-in-out infinite;
+}
+
+.candle-flame.out {
+  opacity: 0.3;
+  filter: grayscale(100%);
+}
+
+@keyframes flicker {
+  0%, 100% {
+    transform: scaleY(1) translateY(0);
+    filter: brightness(1);
+  }
+  25% {
+    transform: scaleY(1.1) translateY(-2px);
+    filter: brightness(1.2);
+  }
+  50% {
+    transform: scaleY(0.95) translateY(1px);
+    filter: brightness(0.9);
+  }
+  75% {
+    transform: scaleY(1.05) translateY(-1px);
+    filter: brightness(1.1);
+  }
+}
